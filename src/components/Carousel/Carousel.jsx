@@ -46,14 +46,6 @@ export default function Carousel() {
                     </div>
                 </div>
 
-                {/* <div className="hero-andrea">
-                    <div className="seller-name">
-                        <p>Andrea, <b>Fashion Designer</b></p>
-                    </div>
-                </div> */}
-
-
-
             </div>
             <div className="content-carousel">
                 <h1>
@@ -89,21 +81,3 @@ export default function Carousel() {
         </div>
     )
 }
-
-
-
-
-
-{/* <div id="carouselExampleSlidesOnly" className="carousel slide carousel-fade" data-ride="carousel">
-    <div className="carousel-inner">
-        <div className="carousel-item active">
-            <img className="d-block w-100" src="..." alt="First slide" />
-        </div>
-        <div className="carousel-item">
-            <img className="d-block w-100" src="..." alt="Second slide" />
-        </div>
-        <div className="carousel-item">
-            <img className="d-block w-100" src="..." alt="Third slide" />
-        </div>
-    </div>
-</div> */}

@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { loaiCongViecAction } from '../../redux/action/action';
 import './Header.css'
 
 export default function Header() {
+
+    const {typesJob} = useSelector(state => state.reducerTong);
+    
+    let dispatch = useDispatch();
+
+    useEffect(() => {
+        getAPI();
+    }, []);
+
+    let getAPI = () => {
+        let action = loaiCongViecAction;
+        dispatch(action);
+    }
 
     //! scroll show/hide header
     const [visible, setVisible] = useState(true)
@@ -9,10 +24,10 @@ export default function Header() {
     useEffect(() => {
         const handleScroll = () => {
             let moving = window.pageYOffset
-            console.log(moving);
+            // console.log(moving);
             setVisible(moving < 100)
             setVisible1(moving < 200)
-            
+
         };
         window.addEventListener("scroll", handleScroll);
         return (() => {
