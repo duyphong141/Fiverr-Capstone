@@ -1,11 +1,11 @@
-.main-header{
+.main-header {
     position: fixed;
     width: 100%;
     z-index: 9999;
     /* background-color: #fff; */
 }
 
-.thanh-header-top{
+.thanh-header-top {
     border-bottom: 1px solid #e4e5e7;
     width: 100%;
 }
@@ -36,40 +36,41 @@
     border-width: 1px;
 }
 
-.search-button{
+.search-button {
     padding: 8px 16px;
     background-color: #222325;
     color: #fff;
     border-radius: 0 4px 4px 0;
 }
 
-.search-button:hover{
+.search-button:hover {
     background-color: #404145;
 }
 
-.main-header button svg{
+.main-header button svg {
     fill: #fff;
 }
 
-.thanh-header nav{
+.thanh-header nav {
     margin-left: 32px;
 }
 
-.main-header ul{
+.main-header ul {
     margin: 0;
     padding: 0;
 }
 
-.main-header li{
+.main-header li {
     padding: 0 10px;
     display: block;
 }
 
-.main-header a.active{
+.main-header a.active {
     color: #1e1692;
 }
 
-.main-header a, .main-header span{
+.main-header a,
+.main-header span {
     font-weight: 600;
     text-decoration: none;
     white-space: nowrap;
@@ -77,7 +78,8 @@
     cursor: pointer;
 }
 
-.main-header a:hover, .main-header span:hover{
+.main-header a:hover,
+.main-header span:hover {
     color: #1dbf73;
     text-decoration: none;
 }
@@ -86,13 +88,13 @@
     margin-right: 20px;
 }
 
-.earth{
+.earth {
     width: 16px;
     height: 16px;
     padding-right: 8px;
 }
 
-.main-header .join{
+.main-header .join {
     font-weight: 700;
     padding: 7px 20px;
     border: 1px solid #1dbf73;
@@ -101,20 +103,20 @@
 }
 
 /* thanh header bottom  */
-.thanh-header-bottom{
+.thanh-header-bottom {
     border-bottom: 1px solid #e4e5e7;
 }
 
-.CategoriesMenu{
+.CategoriesMenu {
     padding: 0 32px;
     margin: 0;
 }
 
-.categories{
+.categories {
     justify-content: space-between;
 }
 
-.categories a{
+.categories a {
     color: #74767e;
     font-weight: 400;
     display: block;
@@ -125,7 +127,7 @@
     text-decoration: none;
 }
 
-.categories a::after:hover{
+.categories a::after:hover {
     background: #1dbf73;
     bottom: 0;
     content: "";
@@ -141,24 +143,33 @@
 .visible {
     background-color: #fff;
     transition: all 0.2s ease-out;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     border: none;
     background-color: transparent !important;
     transition: all 0.4s ease-out;
-  }
+}
 
-  .hidden .site-logo, .hidden a, .hidden a.active, .hidden span{
+.hidden .site-logo,
+.hidden a,
+.hidden a.active,
+.hidden span {
     fill: #fff;
     color: #fff !important;
-  }
+}
 
-  .hidden .join{
+.hidden .join {
     border-color: #fff;
-  }
+}
 
-  .hidden1{
+.hidden1 {
     opacity: 0;
     transition: all 0.1s ease-out;
-  }
+}
+
+
+/* hover dropdown  */
+li:hover>ul.dropdown-menu {
+    display: block;
+}

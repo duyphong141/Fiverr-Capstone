@@ -5,8 +5,8 @@ import './Header.css'
 
 export default function Header() {
 
-    const {typesJob} = useSelector(state => state.reducerTong);
-    
+    const { typesJob } = useSelector(state => state.reducerTong);
+
     let dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,6 +16,16 @@ export default function Header() {
     let getAPI = () => {
         let action = loaiCongViecAction;
         dispatch(action);
+    }
+
+    //! render loại công việc
+    const renderLoaiCongViec = () => {
+        console.log(typesJob)
+        return typesJob.map(item => {
+            return <li key={item.id}>
+                <a href="">{item.tenLoaiCongViec}</a>
+            </li>
+        })
     }
 
     //! scroll show/hide header
@@ -101,12 +111,22 @@ export default function Header() {
             <div className={"thanh-header-bottom " + cls1}>
                 <nav className='CategoriesMenu'>
                     <ul className='categories d-flex'>
-                        <li>
-                            <a href="">Graphics & Design</a>
+
+                        <li className='dropdown'>
+                            <a className='thucoi' data-toggle="dropdown" href="">Graphics & Design</a>
+                            <ul className='dropdown-menu'>
+                                <li><a className='dropdown-item' href="">ahihi</a></li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="">Digital Marketing</a>
+
+                        <li className='dropdown'>
+                            <a className='thucoi' data-toggle="dropdown" href="">Digital Marketing</a>
+                            <ul className='dropdown-menu'>
+                                <li><a className='dropdown-item' href="">ahihi</a></li>
+                            </ul>
                         </li>
+
+
                         <li>
                             <a href="">Writing & Translation</a>
                         </li>
