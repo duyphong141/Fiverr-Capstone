@@ -596,3 +596,40 @@ span.label{
     height: 32px;
     fill: #74767e
 }
+
+
+
+
+
+
+
+
+
+/* scroll show/hide haeder  */
+.visible {
+    background-color: #fff;
+    transition: all 0.2s ease-out;
+}
+
+.hidden {
+    border: none;
+    background-color: transparent !important;
+    transition: all 0.4s ease-out;
+}
+
+.hidden .site-logo,
+.hidden a,
+.hidden a.active,
+.hidden span {
+    fill: #fff;
+    color: #fff !important;
+}
+
+.hidden .join {
+    border-color: #fff;
+}
+
+.hidden1 {
+    opacity: 0;
+    transition: all 0.1s ease-out;
+}

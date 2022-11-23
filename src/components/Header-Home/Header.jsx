@@ -63,6 +63,26 @@ export default function Header() {
         })
     }
 
+    //! scroll show/hide header
+    const [visible, setVisible] = useState(true)
+    const [visible1, setVisible1] = useState(true)
+    useEffect(() => {
+        const handleScroll = () => {
+            let moving = window.pageYOffset
+            // console.log(moving);
+            setVisible(moving < 100)
+            setVisible1(moving < 200)
+
+        };
+        window.addEventListener("scroll", handleScroll);
+        return (() => {
+            window.removeEventListener("scroll", handleScroll);
+        })
+    })
+
+    const cls = visible ? "hidden" : "visible";
+    const cls1 = visible1 ? "hidden1" : "visible";
+
     //! xử lý tìm kiếm công việc
     // lấy dữ liệu từ form lưu state
     let [searchInfo, setSearchInfo] = useState('');
@@ -98,7 +118,7 @@ export default function Header() {
 
     return (
         <div className={'main-header '}>
-            <div className={"thanh-header-top"}>
+            <div className={"thanh-header-top " + cls}>
                 <div className="thanh-header d-flex">
                     <a href="/" className="site-logo">
                         <svg
@@ -117,7 +137,7 @@ export default function Header() {
                         </svg>
                     </a>
                     <div className="search">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className={cls1}>
                             <input onChange={handleInput} type="search" autoComplete="off" placeholder="What service are you looking for today?" />
                             <button className='search-button'>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill"><path d="m15.89 14.653-3.793-3.794a.37.37 0 0 0-.266-.109h-.412A6.499 6.499 0 0 0 6.5 0C2.91 0 0 2.91 0 6.5a6.499 6.499 0 0 0 10.75 4.919v.412c0 .1.04.194.11.266l3.793 3.794a.375.375 0 0 0 .531 0l.707-.707a.375.375 0 0 0 0-.53ZM6.5 11.5c-2.763 0-5-2.238-5-5 0-2.763 2.237-5 5-5 2.762 0 5 2.237 5 5 0 2.762-2.238 5-5 5Z"></path></svg>
@@ -156,7 +176,7 @@ export default function Header() {
                 </div>
             </div>
 
-            <div className={"thanh-header-bottom"}>
+            <div className={"thanh-header-bottom " + cls1}>
                 <nav className='CategoriesMenu'>
                     <ul className='categories d-flex'>
                         {renderLoaiCongViec()}

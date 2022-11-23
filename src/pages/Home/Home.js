@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Home.css'
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header-Home/Header';
 import Carousel from '../../components/Carousel/Carousel';
 import Company from '../../components/Company/Company';
 import Services from '../../components/Services-Slick/Services';
