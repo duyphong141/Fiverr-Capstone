@@ -6,3 +6,9 @@ export const LOGIN = 'LOGIN';
 
 export const DANG_XUAT = 'DANG_XUAT';
 
+// Hiếu làm
+export const LAY_CONG_VIEC_CHI_TIET = "LAY_CONG_VIEC_CHI_TIET";
+
+export const LAY_BINH_LUAN_THEO_CV = "LAY_BINH_LUAN_THEO_CV";
+
+export const TAO_THEM_BINH_LUAN_CHO_CV = "TAO_THEM_BINH_LUAN_CHO_CV";

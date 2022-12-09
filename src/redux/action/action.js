@@ -59,8 +59,37 @@ export const dangNhapAction = (userInfo) => {
             dispatch2(action)
         });
     }
-} 
+}
 
 export const dangXuatAction = () => {
     return { type: DANG_XUAT };
-  };
+};
+
+
+// Hiếu làm 
+export const LayBinhLuanTheoCVAction = (MaCongViec) => {
+    return () => {
+        let promise = axios({
+            method: 'get',
+            url: `${DOMAIN_FIVERR}/binh-luan/lay-binh-luan-theo-cong-viec/${MaCongViec}`,
+            headers: {
+                "TokenCybersoft": TOKEN
+            }
+        });
+    }
+
+}
+
+
+// export const LayCongViecChiTietAction = (MaCongViec) => {
+//     return (dispatch2) => {
+//         let promise = axios({
+//             method: 'get',
+//             url: `${DOMAIN_FIVERR}/cong-viec/lay-cong-viec-chi-tiet/${MaCongViec}`,
+//             headers: {
+//                 "TokenCybersoft": TOKEN
+//             }
+//         });
+//     }
+
+// }

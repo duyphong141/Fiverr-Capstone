@@ -1,0 +1,26 @@
+.gigs-column .react-seller-gigs section { 
+    background: #fff;
+    text-align: center;
+    padding: 128px 0 120px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.seller-gigs-jobs{
+    background: #fff;
+    text-align: center;
+    padding: 128px 0 120px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.gigs-list button{
+    border: none;
+    background-color: white;
+}
+
+.gigs-list button i{
+    color: #B5B6BA;
+}

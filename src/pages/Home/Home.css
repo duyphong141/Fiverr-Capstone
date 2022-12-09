@@ -605,9 +605,20 @@ span.label {
     fill: #74767e
 }
 
+.slick-prev:before,
+.slick-next:before {
+    color: #171414 !important;
+}
 
+.slick-prev:before {
+    position: absolute;
+    top: 15px;
+    right: 14px;
+}
 
-
+.slick-prev:hover, .slick-next:hover {
+    background: white !important;
+}
 
 
 

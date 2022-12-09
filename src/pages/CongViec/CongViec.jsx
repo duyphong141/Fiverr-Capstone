@@ -57,7 +57,7 @@ export default function CongViec(props) {
             return <div className="job-detail">
                 {mangCV.map(cv => {
                     return <div className="job-detail-item" key={cv.id}>
-                        <a href="#">
+                        <a href={`/chitietcongviec/${cv.id}`}>
                             <img className='img-fluid' src={cv.congViec.hinhAnh} alt="" />
                         </a>
 
@@ -71,14 +71,14 @@ export default function CongViec(props) {
 
                             <div className="seller-identifiers">
                                 <div className="seller-nickname">
-                                    <a href="">{cv.tenNguoiTao}</a>
+                                    <a href={`/chitietcongviec/${cv.id}`}>{cv.tenNguoiTao}</a>
                                 </div>
                                 <span className='level-seller'>Level 2 Seller</span>
                             </div>
                         </div>
 
                         <h3 className='description'>
-                            <a href="#">{cv.congViec.tenCongViec}</a>
+                            <a href={`/chitietcongviec/${cv.id}`}>{cv.congViec.tenCongViec}</a>
                         </h3>
 
                         <div className="star-rate">
@@ -122,7 +122,7 @@ export default function CongViec(props) {
 
     return (
         <>
-            <Header/>
+            <Header />
             <header className='related-search'>
                 <nav className='layout-row'>
                     <b>Suggested</b>

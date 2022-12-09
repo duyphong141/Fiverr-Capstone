@@ -22,7 +22,7 @@ export default function Carousel() {
         <div className='fiverr-carousel'>
             <div className="hero-backgrounds">
 
-                <div id="carouselExampleSlidesOnly" className="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
+                <div id="carouselExampleSlidesOnly" className="slide carousel-fade" data-ride="carousel" data-interval="3000">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <div className="hero-andrea">

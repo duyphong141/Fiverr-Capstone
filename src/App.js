@@ -9,6 +9,8 @@ import Header from './components/Header/Header';
 import Login from './pages/Login/Login';
 import CongViec from './pages/CongViec/CongViec';
 import Register from './pages/Register/Register';
+import ChiTietCongViec from './pages/ChiTietCongViec/ChiTietCongViec';
+import Profile from './pages/ChiTietThongTinCaNhan/Profile';
 export const history = createBrowserHistory();
 
 function App() {
@@ -24,6 +26,10 @@ function App() {
         <Route exact path='/search/:congviectimkiem' component={CongViec}/>
         <Route exact path='/categories/:machitietloai' component={CongViec}/>
 
+
+        {/* Hiếu làm  */}
+        <Route exact path="/chitietcongviec/:macongviec" component={ChiTietCongViec} />
+        <Route exact path="/profile" component={Profile} />
 
         <HomeTemplate exact path='/' component={Home}/>
       </Switch>

@@ -88,9 +88,7 @@
 
 
 .slick-next::before{
-    content: "";
     display: inline-block;
-    /* background: url(https://fiverr-res.cloudinary.com/npm-assets/@five…gged_out_homepage_perseus/apps/arrows.a8b0bad.svg) no-repeat; */
     background-size: 16px 64px;
     width: 16px;
     height: 16px;

@@ -5,10 +5,6 @@ body {
     overflow-x: hidden;
 }
 
-body.menu-shown{
-    overflow-y: hidden;
-}
-
 img {
     vertical-align: unset;
 }

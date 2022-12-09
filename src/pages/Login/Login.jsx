@@ -10,7 +10,8 @@ import './Login.css'
 export default function Login(props) {
 
     if (localStorage.getItem(USERLOGIN)) {
-        props.history.push("/");
+        // props.history.push("/");
+        props.history.goBack();
     }
 
     let dispatch = useDispatch();
