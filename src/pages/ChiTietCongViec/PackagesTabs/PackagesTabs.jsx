@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux';
 import { ACCESS_TOKEN, DOMAIN_FIVERR, TOKEN, USERLOGIN } from '../../../util/setting';
 import '../PackagesTabs/PackagesTabs.css'
-
 
 export default function PackagesTabs(props) {
 
@@ -11,15 +11,22 @@ export default function PackagesTabs(props) {
             props.props.history.push("/login");
         }
 
+        const date = new Date();
+        const year = date.getFullYear();
+        // 👇️ getMonth returns integer from 0(January) to 11(December)
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const withSlashes = [day, month, year].join('/');
+
         let promise = axios({
             method: 'post',
             url: `${DOMAIN_FIVERR}/thue-cong-viec`,
             data: {
-                "id": 0,
-                "maCongViec": 0,
-                "maNguoiThue": 21,
-                "ngayThue": "12/7/2022",
-                "hoanThanh": true
+                // "id": 0,
+                "maCongViec": props.maCV,
+                "maNguoiThue": props.uLogin.user.id,
+                "ngayThue": `${withSlashes}`,
+                "hoanThanh": false
             },
             headers: {
                 "tokenCybersoft": TOKEN,
@@ -33,6 +40,8 @@ export default function PackagesTabs(props) {
             console.log(error.response?.data);
         });
     }
+
+    console.log(props.layCVChiTietTheoMaCV.congViec.giaTien)
 
     return <div className='packagestabs mt-5 mb-5 ' >
         <ul className="nav nav-tabs d-flex" id="myTab" role="tablist">
@@ -53,7 +62,7 @@ export default function PackagesTabs(props) {
                         <h6 className='titleApplication'>Basic Application</h6>
                     </div>
                     <div className="">
-                        <p>$1000</p>
+                        <p>${props.layCVChiTietTheoMaCV.congViec.giaTien}</p>
                     </div>
                 </div>
                 <div className='mt-5'>

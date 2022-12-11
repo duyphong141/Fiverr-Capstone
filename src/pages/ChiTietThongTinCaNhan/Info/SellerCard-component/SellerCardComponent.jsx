@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useFormik } from 'formik'
+import { ErrorMessage, Field, FieldArray, Form, FormikProvider, useFormik } from 'formik'
 import React, { Fragment, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { layChiTietThongTinCaNhanAction } from '../../../../redux/action/actionLayChiTietThongTinCaNhan'
@@ -8,6 +8,7 @@ import '../SellerCard-component/SellerCardComponent.css'
 
 export default function SellerCardComponent(props) {
     let { renderND } = props
+    // console.log(renderND)
 
     const formik = useFormik({
         initialValues: {
@@ -15,7 +16,8 @@ export default function SellerCardComponent(props) {
             email: '',
             phone: '',
             birthday: '',
-            role: ''
+            role: '',
+            skill: ['ahihi', 123]
 
             // {
             //     "id": 0,
@@ -35,9 +37,26 @@ export default function SellerCardComponent(props) {
         },
         onSubmit: values => {
             console.log(values);
+            let promise = axios({
+                url: `${DOMAIN_FIVERR}/users/${renderND.id}`,
+                method: "PUT",
+                data: values,
+                headers: {
+                    "tokenCybersoft": TOKEN
+                }
+            });
+            promise.then(result => {
+                console.log(result.data.content)
 
+            });
+            promise.catch(error => {
+                console.log(error.response.data.content)
+
+            })
         },
     });
+    console.log(formik.values)
+    console.log(renderND.skill)
 
     return (
         <Fragment>
@@ -102,39 +121,90 @@ export default function SellerCardComponent(props) {
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div className="modal-body">
-                            <form onSubmit={formik.handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="username" className="col-form-label">Name:</label>
-                                    <input name='name' onChange={formik.handleChange} type="text" className="form-control" id="username" defaultValue={renderND.name} />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="email" className="col-form-label">Email:</label>
-                                    <input type="text" className="form-control" id="email" defaultValue={renderND.email} />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="phone" className="col-form-label">Phone:</label>
-                                    <input type="text" className="form-control" id="phone" defaultValue={renderND.phone} />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="birthday" className="col-form-label">Birthday:</label>
-                                    <input type="text" className="form-control" id="birthday" defaultValue={renderND.phone} />
-                                </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="" className="col-form-label">Role:</label>
-                                    <select class="custom-select">
-                                        <option>Role</option>
-                                        <option value="USER">USER</option>
-                                        <option value="ADMIN">ADMIN</option>
-                                    </select>
+                        <FormikProvider value={formik}>
+                            <form onSubmit={formik.handleSubmit}>
+                                <div className="modal-body">
+                                    {/* <FormikProvider value={formik}>
+                                <form onSubmit={formik.handleSubmit}> */}
+                                    <div className="form-group">
+                                        <label htmlFor="name" className="col-form-label">Name:</label>
+                                        <input name='name' type="text" className="form-control" id="name" onChange={formik.handleChange} onBlur={formik.handleBlur} defaultValue={renderND.name} />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="email" className="col-form-label">Email:</label>
+                                        <input name='email' type="text" className="form-control" id="email" onChange={formik.handleChange} onBlur={formik.handleBlur} defaultValue={renderND.email} />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="phone" className="col-form-label">Phone:</label>
+                                        <input name='phone' type="text" className="form-control" id="phone" onChange={formik.handleChange} onBlur={formik.handleBlur} defaultValue={renderND.phone} />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="birthday" className="col-form-label">Birthday:</label>
+                                        <input name='birthday' type="text" className="form-control" id="birthday" onChange={formik.handleChange} onBlur={formik.handleBlur} defaultValue={renderND.birthday} />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="" className="col-form-label">Role:</label>
+                                        <select name='role' class="custom-select" onChange={formik.handleChange} defaultValue={renderND.role}>
+                                            <option>Role</option>
+                                            <option value="USER">USER</option>
+                                            <option value="ADMIN">ADMIN</option>
+                                        </select>
+                                    </div>
+
+                                    {/* array skill  */}
+
+                                    <label>Skill:</label>
+                                    <FieldArray name="skill">
+                                        {({ insert, remove, push }) => (
+                                            <div>
+                                                {formik.values.skill.length > 0 &&
+                                                    //   {renderND.skill.length > 0 &&
+                                                    formik.values.skill.map((friend, index) => (
+                                                        // renderND?.skill.map((item, index) => (
+                                                        <div className="row skill-input" key={index}>
+                                                            <div className="col">
+                                                                <Field
+                                                                    name={`skill[${index}]`}
+                                                                    value={formik.values.skill[index]}
+                                                                    // defaultValue={renderND.skill[index]}
+                                                                    onChange={formik.handleChange}
+                                                                    placeholder="Frontend, HTML, CSS,..."
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                />
+                                                            </div>
+                                                            <div className="col">
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-danger"
+                                                                    onClick={() => remove(index)}
+                                                                >
+                                                                    X
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-success button-skill"
+                                                    onClick={() => push()}
+                                                >
+                                                    Thêm Skill
+                                                </button>
+                                            </div>
+                                        )}
+                                    </FieldArray>
+                                    {/* hết array skill  */}
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button onSubmit={formik.handleSubmit} type="submit" className="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Submit</button>
-                        </div>
+                        </FormikProvider>
+
                     </div>
                 </div>
             </div>

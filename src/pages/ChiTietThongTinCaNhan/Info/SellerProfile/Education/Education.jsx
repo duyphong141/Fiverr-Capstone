@@ -33,9 +33,6 @@ export default function Education() {
 
     }
 
-    console.log(inputEducation)
-    console.log(choseOption)
-
 
     return (
         <form className='js-form-skills'>

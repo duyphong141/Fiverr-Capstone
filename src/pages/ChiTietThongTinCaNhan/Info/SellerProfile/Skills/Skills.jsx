@@ -132,8 +132,6 @@ export default function Skills(props) {
 
     }
 
-    console.log(props.renderND)
-
     
     return (
         <form className='js-form-skills'>

@@ -37,3 +37,16 @@
    opacity: 1;
    
 }
+
+.skill-input{
+    margin: 5px 0;
+    align-items: center;
+}
+
+.skill-input .col {
+    padding-left: 0;
+}
+
+.button-skill{
+    margin: 5px 0;
+}

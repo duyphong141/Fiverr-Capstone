@@ -13,13 +13,17 @@ import SellerFAQ from './SellerFAQ/SellerFAQ';
 import SellerReview from './SellerReview/SellerReview';
 import PeopleComment from './PeopleComment/PeopleComment';
 import PackagesTabs from './PackagesTabs/PackagesTabs';
+import { useSelector } from 'react-redux';
 
 
 
 export default function ChiTietCongViec(props) {
+
+    const {uLogin} = useSelector(state => state.reducerTong)
+ 
     const [layCVChiTietTheoMaCV, setLayCVChiTietTheoMaCV] = useState([]);
     let maCV = props.match.params.macongviec;
-
+    
     useEffect(() => {
         let promise = axios({
             method: 'get',
@@ -60,7 +64,7 @@ export default function ChiTietCongViec(props) {
 
                 <SellerReview item={item} maCV={maCV}/>
 
-                <PeopleComment />
+                <PeopleComment maCV={maCV} uLogin={uLogin}/>
 
             </div>
         })
@@ -85,7 +89,7 @@ export default function ChiTietCongViec(props) {
 
 
                     <div className='gig-page-right col-lg-4'>
-                        <PackagesTabs props={props}/>
+                        <PackagesTabs props={props} maCV={maCV} uLogin={uLogin} layCVChiTietTheoMaCV={layCVChiTietTheoMaCV[0]}/>
                     </div>
                 </div>
             </div>
